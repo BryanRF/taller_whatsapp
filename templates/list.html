@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Listado{% endblock %}
+{% block content %}
+<h1 class="mb-4">Listado de {{ model._meta.verbose_name_plural }}</h1>
+<a href="{% url model._meta.model_name|add:'_create' %}" class="btn btn-primary mb-3">Crear {{ model._meta.verbose_name }}</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            {% for field in model._meta.fields %}
+            <th>{{ field.verbose_name }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in object_list %}
+        <tr>
+            {% for field in model._meta.fields %}
+            <td>{{ obj|attr:field.name }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="pagination">
+    {% if is_paginated %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+        {% for num in paginator.page_range %}
+        <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Crear{% endblock %}
+{% block content %}
+<div class="hero bg-primary text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4">Bienvenido al Sistema de Taller</h1>
+        <p class="lead">Gestiona de manera eficiente tus vehículos, mantenimientos y más</p>
+        <a href="{% url 'cliente_list' %}" class="btn btn-light btn-lg">Ver Clientes</a>
+        <a href="{% url 'vehiculo_list' %}" class="btn btn-light btn-lg">Ver Vehículos</a>
+        <a href="{% url 'mantenimiento_list' %}" class="btn btn-light btn-lg">Ver Mantenimientos</a>
+        <a href="{% url 'alerta_list' %}" class="btn btn-light btn-lg">Ver Alertas</a>
+        <a href="{% url 'historialmensaje_list' %}" class="btn btn-light btn-lg">Ver Historial de Mensajes</a>
+    </div>
+</div>
+{% endblock %}

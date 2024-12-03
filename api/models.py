@@ -85,6 +85,7 @@ class Servicio(models.Model):
 
     def __str__(self):
         return f'{self.tipo_servicio.nombre} - {self.vehiculo.placa} ({self.fecha_servicio})'
+    
 class Mantenimiento(models.Model):
     vehiculo = models.ForeignKey(Vehiculo, on_delete=models.SET_NULL, null=True)
     tipo_servicio = models.ForeignKey(TipoServicio, on_delete=models.SET_NULL, null=True)
@@ -93,14 +94,21 @@ class Mantenimiento(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     realizado_por = models.CharField(max_length=255, blank=True, null=True)
     estado = models.CharField(max_length=20, choices=[('Pendiente', 'Pendiente'), ('Completado', 'Completado')], default='Pendiente')
+    costo = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Asegúrate de que este campo esté aquí
 
-    def __str__(self):
-        return f'{self.tipo_servicio.nombre} para {self.vehiculo} - {self.fecha_realizacion}'
-    
     def save(self, *args, **kwargs):
         if self.tipo_servicio:
             self.costo = self.tipo_servicio.costo_base
         super(Mantenimiento, self).save(*args, **kwargs)
+
+    def get_costo(self):
+        # Retorna el costo con formato decimal (si lo deseas)
+        return f"${self.costo:.2f}" if self.costo else "No disponible"
+    
+    get_costo.short_description = 'Costo'  # Para mostrar un título más amigable en el admin
+
+
+
 class Alerta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     mensaje = models.TextField()

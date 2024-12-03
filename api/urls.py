@@ -1,30 +1,26 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import (
-    TallerViewSet, ClienteViewSet, MarcaViewSet, ModeloViewSet, TipoVehiculoViewSet, 
-    VehiculoViewSet, FallaViewSet, TipoServicioViewSet, ServicioViewSet, 
-    MantenimientoViewSet, AlertaViewSet, HistorialMensajeViewSet, 
-    RecordatorioMantenimientoViewSet, ConfiguracionSistemaViewSet
-)
+from django.urls import path
+from .views import inicio, GenericListView, GenericCreateView
+from .models import Cliente, Vehiculo, Mantenimiento, Alerta, HistorialMensaje
+from .forms import ClienteForm, VehiculoForm, MantenimientoForm, AlertaForm, HistorialMensajeForm
 
-# Crear el enrutador y registrar las vistas
-router = DefaultRouter()
-router.register(r'talleres', TallerViewSet)
-router.register(r'clientes', ClienteViewSet)
-router.register(r'marcas', MarcaViewSet)
-router.register(r'modelos', ModeloViewSet)
-router.register(r'tipos-vehiculos', TipoVehiculoViewSet)
-router.register(r'vehiculos', VehiculoViewSet)
-router.register(r'fallas', FallaViewSet)
-router.register(r'tipos-servicios', TipoServicioViewSet)
-router.register(r'servicios', ServicioViewSet)
-router.register(r'mantenimientos', MantenimientoViewSet)
-router.register(r'alertas', AlertaViewSet)
-router.register(r'historial-mensajes', HistorialMensajeViewSet)
-router.register(r'recordatorios-mantenimiento', RecordatorioMantenimientoViewSet)
-router.register(r'configuraciones', ConfiguracionSistemaViewSet)
-
-# Incluir las rutas del enrutador en las URL del proyecto
-urlpatterns = [
-    path('api/', include(router.urls)),
+# Lista de configuraciones para modelos
+MODELS_CONFIG = [
+    {'model': Cliente, 'form': ClienteForm},
+    {'model': Vehiculo, 'form': VehiculoForm},
+    {'model': Mantenimiento, 'form': MantenimientoForm},
+    {'model': Alerta, 'form': AlertaForm},
+    {'model': HistorialMensaje, 'form': HistorialMensajeForm},
 ]
+
+urlpatterns = [
+    path('', inicio, name='inicio'),  # Página de inicio
+]
+
+
+for config in MODELS_CONFIG:
+    model_name = config['model']._meta.model_name
+    urlpatterns += [
+        path(f'{model_name}/', GenericListView.as_view(model=config['model']), name=f'{model_name}_list'),
+        path(f'{model_name}/crear/', GenericCreateView.as_view(model=config['model'], form_class=config['form']), name=f'{model_name}_create'),
+    ]
+    print (model_name)

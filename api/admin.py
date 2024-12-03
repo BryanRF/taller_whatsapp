@@ -66,12 +66,14 @@ class ServicioAdmin(admin.ModelAdmin):
     search_fields = ('vehiculo__placa', 'tipo_servicio__nombre')
     list_filter = ('estado', 'fecha_servicio', 'tipo_servicio')
 
-# Registrar el modelo Mantenimiento
 @admin.register(Mantenimiento)
 class MantenimientoAdmin(admin.ModelAdmin):
-    list_display = ('vehiculo', 'tipo_servicio', 'fecha_realizacion', 'fecha_siguiente', 'estado', 'costo')
+    list_display = ('vehiculo', 'tipo_servicio', 'fecha_realizacion', 'fecha_siguiente', 'estado', 'get_costo')
     search_fields = ('vehiculo__placa', 'tipo_servicio__nombre')
     list_filter = ('estado', 'fecha_realizacion')
+
+
+ # Para que tenga un título adecuado en la interfaz
 
 # Registrar el modelo Alerta
 @admin.register(Alerta)
