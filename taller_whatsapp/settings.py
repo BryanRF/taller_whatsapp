@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+'widget_tweaks',
      'rest_framework',
       'api',
 ]
@@ -135,7 +135,20 @@ USE_TZ = True  # Asegúrate de que las zonas horarias estén activadas
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# settings.py
+
+
+
+# Rutas de los archivos estáticos
+STATIC_URL = '/static/'  # URL pública para acceder a los archivos estáticos
+
+# Directorios donde buscar los archivos estáticos
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Carpeta 'static' en la raíz de tu proyecto
+]
+
+# Directorio para los archivos estáticos cuando se hace un "collectstatic" (solo en producción)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directorio donde se recopilan los archivos estáticos
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

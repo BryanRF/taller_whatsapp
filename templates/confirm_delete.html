@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar {{ verbose_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-white">Eliminar {{ verbose_name }}</h1>
+    <div class="bg-light p-4 border rounded shadow-sm">
+        <h4 class="text-center">¿Estás seguro de que deseas eliminar este {{ verbose_name }}?</h4>
+        <p class="text-center">Esta acción no se puede deshacer.</p>
+        <div class="d-flex justify-content-between">
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+            <a href="{% url model_name|add:'_list' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
