@@ -2,7 +2,7 @@ from django.urls import path
 from .views import *
 from .models import *
 from .forms import *
-
+from . import views
 # Lista de configuraciones para modelos
 MODELS_CONFIG = [
     {'model': Cliente, 'form': ClienteForm},
@@ -14,6 +14,7 @@ MODELS_CONFIG = [
 
 urlpatterns = [
     path('', inicio, name='inicio'),  # Página de inicio
+    path('enviar_alerta/<int:cliente_id>/', views.enviar_alerta, name='enviar_alerta'),
 ]
 
 # Generación de URLs dinámicas para cada modelo

@@ -1,0 +1,15 @@
+<button onclick="enviarAlerta({{ cliente.id }})">Enviar Alerta por WhatsApp</button>
+
+<script>
+    function enviarAlerta(clienteId) {
+        fetch(`/enviar_alerta/${clienteId}/`)
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                alert('Hubo un error al enviar la alerta.');
+            });
+    }
+</script>
+<!-- Si prefieres una opción sin costo, necesitarás buscar opciones de API de WhatsApp gratuitas, pero debes tener en cuenta que generalmente las opciones gratuitas son limitadas en cuanto a número de mensajes o capacidad. Si te interesa una opción sin costo, considera la posibilidad de usar un bot en WhatsApp Web mediante Selenium o un servicio como WATI que tiene una opción básica gratuita. -->
