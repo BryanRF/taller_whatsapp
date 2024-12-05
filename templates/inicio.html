@@ -1,83 +1,64 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Crear{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block content %}
-<div class="hero" >
-        <div class="hero-overlay">
-            <div class="container text-center text-white">
-                <h1 class="display-4 mb-4">Bienvenido al Sistema de Taller</h1>
-                <p class="lead mb-4">Gestiona de manera eficiente tus vehículos, mantenimientos y más</p>
-             
-            </div>
+<style>
+    .glass{
+        /* From https://css.glass */
+        background: rgba(118, 120, 129, 0.38);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(8.8px);
+        -webkit-backdrop-filter: blur(8.8px);
+        border: 1px solid rgba(118, 120, 129, 0.47);
+        color :aliceblue;
+    }
+</style>
+<div class="container mt-5 glass text-white">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-4">Bienvenido al Sistema de Taller</h1>
+            <p class="lead ">Gestiona tus clientes, vehículos y mantenimientos de manera eficiente.</p>
+            <hr class="my-4">
+            <p class="">
+                Este sistema te permite llevar un control detallado de las actividades relacionadas con tu taller, como:
+            </p>
         </div>
     </div>
-{% endblock %}
-    
-{% block extra_css %}
-    <style>
-        /* Fondo Hero */
-        .hero {
-            background-image: url('/static/img/taller_vehiculos.jpg'); /* Aquí colocas la imagen que desees usar */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Overlay para mejorar la visibilidad del texto */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Estilos para el texto en el Hero */
-        .hero h1, .hero p {
-            font-weight: bold;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
-
-        .btn-group .btn {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Espaciado entre botones */
-        .btn-group .btn + .btn {
-            margin-left: 10px;
-        }
-
-        /* Ajustes de tipografía */
-        .display-4 {
-            font-size: 3rem;
-        }
-
-        .lead {
-            font-size: 1.25rem;
-        }
-    </style>
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <i class="fas fa-users fa-3x text-primary mb-3"></i>
+            <h5>Gestión de Clientes</h5>
+            <p class="">Administra la información de tus clientes de manera sencilla.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-car fa-3x text-success mb-3"></i>
+            <h5>Control de Vehículos</h5>
+            <p class="">Lleva un registro detallado de los vehículos de tus clientes.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-wrench fa-3x text-warning mb-3"></i>
+            <h5>Seguimiento de Mantenimientos</h5>
+            <p class="">Organiza y supervisa los servicios realizados en tu taller.</p>
+        </div>
+    </div>
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <i class="fas fa-bell fa-3x text-danger mb-3"></i>
+            <h5>Alertas Inteligentes</h5>
+            <p class="">Recibe notificaciones de mantenimientos pendientes o servicios próximos.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-comment-alt fa-3x text-info mb-3"></i>
+            <h5>Historial de Mensajes</h5>
+            <p class="">Consulta los mensajes enviados a tus clientes fácilmente.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-user-shield fa-3x text-secondary mb-3"></i>
+            <h5>Administración Segura</h5>
+            <p class="">Accede a herramientas de administración avanzadas.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

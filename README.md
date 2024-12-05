@@ -115,7 +115,7 @@ taller_whatsapp/
 
 Este proyecto está bajo la licencia [MIT](LICENSE).
 
-```
+
 
 ### Explicación de los pasos:
 1. **Instalación detallada:** Proporcioné los comandos para clonar, crear un entorno virtual, activar el entorno y configurar las dependencias.
