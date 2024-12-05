@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Cliente
 from django.http import JsonResponse
-from .utils import enviar_alerta_whatsapp
+# from .utils import enviar_alerta_whatsapp
 # Vista para la página de inicio
 def inicio(request):
     return render(request, 'inicio.html')

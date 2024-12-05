@@ -5,21 +5,33 @@ from .models import (
     Alerta, HistorialMensaje, RecordatorioMantenimiento, ConfiguracionSistema
 )
 
+from django.utils.safestring import mark_safe
+
 class BaseBootstrapForm(forms.ModelForm):
-    """Clase base para agregar estilos de Bootstrap a los formularios."""
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            # Para campos de tipo CheckboxInput, usa 'form-check-input'
-            if isinstance(field.widget, forms.CheckboxInput):
-                field.widget.attrs.update({
-                    'class': 'form-check-input',
-                })
-            else:
-                field.widget.attrs.update({
-                    'class': 'form-control',
-                    'placeholder': field.label
-                })
+    """Clase base para agregar estilos de Bootstrap y estructura responsiva."""
+    def as_div(self):
+        """Renderiza cada campo dentro de un div con clases Bootstrap."""
+        output = []
+        for field_name, field in self.fields.items():
+            widget = self[field_name]
+            field_classes = 'form-check-input' if isinstance(field.widget, forms.CheckboxInput) else 'form-control'
+            field.widget.attrs.setdefault('class', field_classes)
+            div_class = 'col-6'  # Clase para la responsividad
+            label = widget.label_tag(attrs={'class': 'form-label'})
+            output.append(
+                f'<div class="{div_class} mb-3">'
+                f'{label}'
+                f'{widget}'
+                f'</div>'
+            )
+        return mark_safe(''.join(output))
+
+    def __str__(self):
+        return self.as_div()
+
+
+
+
 
 
 class TallerForm(BaseBootstrapForm):
