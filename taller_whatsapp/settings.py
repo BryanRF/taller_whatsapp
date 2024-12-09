@@ -180,4 +180,3 @@ LOGOUT_REDIRECT_URL = 'login'  # Página a la que se redirige después de cerrar
 LOGIN_URL = 'login'  # Página de login predeterminada
 
 
-# settings.py

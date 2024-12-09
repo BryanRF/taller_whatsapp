@@ -14,7 +14,7 @@ class BaseBootstrapForm(forms.ModelForm):
         output = []
         for field_name, field in self.fields.items():
             widget = self[field_name]
-            field_classes = 'form-check-input pr-sm' if isinstance(field.widget, forms.CheckboxInput) else 'form-control'
+            field_classes = 'form-check-input ' if isinstance(field.widget, forms.CheckboxInput) else 'form-control'
             field.widget.attrs.setdefault('class', field_classes)
 
             # Cambiamos la clase para que los check tengan col-12
