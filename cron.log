@@ -1,0 +1,253 @@
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 7772
+"GET /historialmensaje/ HTTP/1.1" 200 6989
+"GET /historialmensaje/ HTTP/1.1" 200 7085
+"GET /historialmensaje/ HTTP/1.1" 200 7091
+"GET /historialmensaje/ HTTP/1.1" 200 7091
+"GET /mantenimiento/ HTTP/1.1" 200 7252
+"GET /historialmensaje/ HTTP/1.1" 200 7091
+"GET /historialmensaje/ HTTP/1.1" 200 7099
+"GET /historialmensaje/ HTTP/1.1" 200 7095
+Internal Server Error: /historialmensaje/
+Traceback (most recent call last):
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\smartif.py", line 179, in translate_token
+    op = OPERATORS[token]
+KeyError: "'{% url 'historialmensaje_list"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\defaulttags.py", line 952, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\defaulttags.py", line 885, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\smartif.py", line 170, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\smartif.py", line 181, in translate_token
+    return self.create_var(token)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\defaulttags.py", line 888, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: 'historialmensaje_list' from ''{% url 'historialmensaje_list'
+"GET /historialmensaje/ HTTP/1.1" 500 227465
+"GET /historialmensaje/ HTTP/1.1" 200 7096
+"GET /historialmensaje/ HTTP/1.1" 200 7201
+"GET /mantenimiento/ HTTP/1.1" 200 7339
+"GET /vehiculo/ HTTP/1.1" 200 7623
+"GET /historialmensaje/ HTTP/1.1" 200 7201
+"GET /enviar-mensajes/ HTTP/1.1" 200 23
+"GET /enviar-mensajes/ HTTP/1.1" 200 23
+C:\Users\rfrey\Documents\taller_whatsapp\taller_whatsapp\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /vehiculo/ HTTP/1.1" 200 7623
+C:\Users\rfrey\Documents\taller_whatsapp\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /historialmensaje/ HTTP/1.1" 200 7201
+"GET /mantenimiento/ HTTP/1.1" 200 7339
+"GET /vehiculo/ HTTP/1.1" 200 7623
+"GET /cliente/ HTTP/1.1" 200 7184
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3771
+"GET / HTTP/1.1" 200 7772
+"GET /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 2270
+"GET /register/ HTTP/1.1" 200 3216
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\api\views.py", line 66, in register
+    return render(request, 'usuarios/register.html', {'form': form})
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\rfrey\Documents\taller_whatsapp\venv\lib\site-packages\django\template\base.py", line 568, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 9: 'static'. Did you forget to register or load this tag?
+"GET /register/ HTTP/1.1" 500 168332
+"GET /register/ HTTP/1.1" 200 3285
+"GET /register/ HTTP/1.1" 200 3343
+"GET /register/ HTTP/1.1" 200 3335
+"GET /register/ HTTP/1.1" 200 3340
+"GET /register/ HTTP/1.1" 200 3352
+"GET /register/ HTTP/1.1" 200 3352
+"GET /login/ HTTP/1.1" 200 2406
+"GET /login/ HTTP/1.1" 200 1874
+"GET /register/ HTTP/1.1" 200 2820
+"GET /register/ HTTP/1.1" 200 2820
+"GET /register/ HTTP/1.1" 200 2820
+"GET /login/ HTTP/1.1" 200 2122
+"GET /register/ HTTP/1.1" 200 2820
+"GET /login/ HTTP/1.1" 200 2122
+"GET /login/ HTTP/1.1" 200 2122
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /static/css/estilo.css HTTP/1.1" 200 1814
+"GET /static/img/taller_vehiculos.jpg HTTP/1.1" 200 789887
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6145
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /register/ HTTP/1.1" 200 3192
+"GET /static/css/estilo.css HTTP/1.1" 200 1814
+"GET /static/img/taller_vehiculos.jpg HTTP/1.1" 200 789887
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6145
+"GET /register/ HTTP/1.1" 200 4070
+"GET /login/ HTTP/1.1" 200 3000
+"GET /login/ HTTP/1.1" 200 3000
+"GET /login/ HTTP/1.1" 200 3000
+"GET /register/ HTTP/1.1" 200 4070
+"GET /register/ HTTP/1.1" 200 4070
+"GET /static/css/estilo.css HTTP/1.1" 200 1814
+"GET /static/img/taller_vehiculos.jpg HTTP/1.1" 200 789887
+"GET /login/ HTTP/1.1" 200 3000
+"POST /login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 7772
+"GET /vehiculo/ HTTP/1.1" 200 7623
+"GET /historialmensaje/ HTTP/1.1" 200 7201
+"GET /enviar-mensajes/ HTTP/1.1" 200 23
+"GET /cliente/ HTTP/1.1" 200 7184
+"GET /cliente/crear/ HTTP/1.1" 200 6850
+"POST /cliente/crear/ HTTP/1.1" 302 0
+"GET /cliente/ HTTP/1.1" 200 8470
+"GET /cliente/editar/2/ HTTP/1.1" 200 6661
+"GET /cliente/ HTTP/1.1" 200 8470
+"GET /cliente/editar/2/ HTTP/1.1" 200 6661
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/editar/2/ HTTP/1.1" 200 6777
+"GET /vehiculo/ HTTP/1.1" 200 7739
+"GET /vehiculo/crear/ HTTP/1.1" 200 8578
+"GET /vehiculo/ HTTP/1.1" 200 7739
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/crear/ HTTP/1.1" 200 6966
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/editar/2/ HTTP/1.1" 200 6777
+"GET /mantenimiento/ HTTP/1.1" 200 7455
+"GET /mantenimiento/crear/ HTTP/1.1" 200 7778
+C:\Users\rfrey\Documents\taller_whatsapp\api\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\rfrey\Documents\taller_whatsapp\api\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/editar/2/ HTTP/1.1" 200 6777
+C:\Users\rfrey\Documents\taller_whatsapp\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cliente/editar/2/ HTTP/1.1" 200 6781
+"GET /cliente/editar/2/ HTTP/1.1" 200 6781
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/crear/ HTTP/1.1" 200 6966
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/editar/2/ HTTP/1.1" 200 6781
+"GET /cliente/editar/2/ HTTP/1.1" 200 6904
+"GET /cliente/editar/2/ HTTP/1.1" 200 6908
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/crear/ HTTP/1.1" 200 6833
+"GET /cliente/crear/ HTTP/1.1" 200 6833
+C:\Users\rfrey\Documents\taller_whatsapp\api\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cliente/crear/ HTTP/1.1" 200 6834
+C:\Users\rfrey\Documents\taller_whatsapp\api\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /cliente/crear/ HTTP/1.1" 200 6834
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /vehiculo/ HTTP/1.1" 200 7739
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET /cliente/ HTTP/1.1" 200 8634
+"GET / HTTP/1.1" 200 7888
+"GET /mantenimiento/ HTTP/1.1" 200 7455
+"GET /historialmensaje/ HTTP/1.1" 200 7317
+"GET /mantenimiento/ HTTP/1.1" 200 7455
+"GET /cliente/ HTTP/1.1" 200 8634
+C:\Users\rfrey\Documents\taller_whatsapp\api\forms.py changed, reloading.
+Watching for file changes with StatReloader

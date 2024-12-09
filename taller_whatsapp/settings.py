@@ -37,9 +37,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-'widget_tweaks',
+    'widget_tweaks',
+    'django_cron',
      'rest_framework',
       'api',
+]
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'cron.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+        },
+    },
+}
+CRON_CLASSES = [
+    'taller_whatsapp.cron.EnviarMensajesJob',
 ]
 
 
@@ -129,7 +150,6 @@ USE_I18N = True
 USE_TZ = True
 # settings.py
 TIME_ZONE = 'America/Lima'  # Para Perú o la zona horaria que prefieras
-USE_TZ = True  # Asegúrate de que las zonas horarias estén activadas
 
 
 # Static files (CSS, JavaScript, Images)
@@ -154,3 +174,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directorio donde se recop
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'inicio'  # Página a la que se redirige después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'login'  # Página a la que se redirige después de cerrar sesión
+LOGIN_URL = 'login'  # Página de login predeterminada
+
+
+# settings.py

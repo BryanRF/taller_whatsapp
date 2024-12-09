@@ -3,18 +3,22 @@ from .views import *
 from .models import *
 from .forms import *
 from . import views
+from django.contrib.auth.views import LoginView, LogoutView
 # Lista de configuraciones para modelos
 MODELS_CONFIG = [
     {'model': Cliente, 'form': ClienteForm},
     {'model': Vehiculo, 'form': VehiculoForm},
     {'model': Mantenimiento, 'form': MantenimientoForm},
-    {'model': Alerta, 'form': AlertaForm},
     {'model': HistorialMensaje, 'form': HistorialMensajeForm},
 ]
 
 urlpatterns = [
+    path('login/', LoginView.as_view(template_name='usuarios/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/', views.register, name='register'),
     path('', inicio, name='inicio'),  # Página de inicio
-    path('enviar_alerta/<int:cliente_id>/', views.enviar_alerta, name='enviar_alerta'),
+    path('enviar-mensajes/', EnviarMensajesAPIView.as_view(), name="enviar-mensajes"),
+    
 ]
 
 # Generación de URLs dinámicas para cada modelo

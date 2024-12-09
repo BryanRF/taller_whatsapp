@@ -16,10 +16,7 @@ class MantenimientoSerializer(serializers.ModelSerializer):
         model = Mantenimiento
         fields = ['id', 'vehiculo', 'tipo_servicio', 'fecha_realizacion', 'fecha_siguiente', 'descripcion', 'realizado_por', 'estado']
 
-class AlertaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Alerta
-        fields = ['id', 'cliente', 'mensaje', 'tipo_alerta', 'fecha_envio', 'estado']
+
 
 class HistorialMensajeSerializer(serializers.ModelSerializer):
     class Meta:

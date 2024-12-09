@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import (
     Taller, Cliente, Marca, Modelo, TipoVehiculo, Vehiculo, Falla,
-    TipoServicio, Servicio, Mantenimiento, Alerta, HistorialMensaje, 
-    RecordatorioMantenimiento, ConfiguracionSistema
+    TipoServicio, Servicio, Mantenimiento,  HistorialMensaje, 
+    ConfiguracionSistema
 )
 
 # Registrar el modelo Taller
@@ -75,12 +75,6 @@ class MantenimientoAdmin(admin.ModelAdmin):
 
  # Para que tenga un título adecuado en la interfaz
 
-# Registrar el modelo Alerta
-@admin.register(Alerta)
-class AlertaAdmin(admin.ModelAdmin):
-    list_display = ('cliente', 'mensaje', 'tipo_alerta', 'fecha_envio', 'estado')
-    search_fields = ('cliente__nombre', 'mensaje')
-    list_filter = ('tipo_alerta', 'estado', 'fecha_envio')
 
 # Registrar el modelo HistorialMensaje
 @admin.register(HistorialMensaje)
@@ -89,12 +83,7 @@ class HistorialMensajeAdmin(admin.ModelAdmin):
     search_fields = ('cliente__nombre', 'mensaje')
     list_filter = ('estado_envio', 'fecha_envio')
 
-# Registrar el modelo RecordatorioMantenimiento
-@admin.register(RecordatorioMantenimiento)
-class RecordatorioMantenimientoAdmin(admin.ModelAdmin):
-    list_display = ('vehiculo', 'mantenimiento', 'fecha_recordatorio', 'enviado')
-    search_fields = ('vehiculo__placa',)
-    list_filter = ('enviado', 'fecha_recordatorio')
+
 
 # Registrar el modelo ConfiguracionSistema
 @admin.register(ConfiguracionSistema)

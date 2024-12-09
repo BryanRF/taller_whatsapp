@@ -107,17 +107,7 @@ class Mantenimiento(models.Model):
     
     get_costo.short_description = 'Costo'  # Para mostrar un título más amigable en el admin
 
-
-
-class Alerta(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    mensaje = models.TextField()
-    tipo_alerta = models.IntegerField(choices=[(1, 'Mantenimiento'), (2, 'Oferta'), (3, 'Recordatorio')])
-    fecha_envio = models.DateTimeField(auto_now_add=True)
-    estado = models.CharField(max_length=20, choices=[('Enviado', 'Enviado'), ('Pendiente', 'Pendiente')], default='Pendiente')
-
-    def __str__(self):
-        return f'Alerta para {self.cliente} - {self.tipo_alerta} - {self.estado}'
+    
 class HistorialMensaje(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     mensaje = models.TextField()
@@ -126,14 +116,7 @@ class HistorialMensaje(models.Model):
 
     def __str__(self):
         return f'Mensaje a {self.cliente} - {self.fecha_envio}'
-class RecordatorioMantenimiento(models.Model):
-    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
-    mantenimiento = models.ForeignKey(Mantenimiento, on_delete=models.CASCADE)
-    fecha_recordatorio = models.DateTimeField(default=timezone.now)
-    enviado = models.BooleanField(default=False)  # Estado del recordatorio
 
-    def __str__(self):
-        return f'Recordatorio para {self.vehiculo.placa} - {self.fecha_recordatorio}'
 class ConfiguracionSistema(models.Model):
     taller = models.ForeignKey(Taller, on_delete=models.CASCADE)
     configuracion_alertas = models.BooleanField(default=True)

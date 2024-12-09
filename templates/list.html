@@ -1,33 +1,38 @@
 {% extends "base.html" %}
 {% block title %}Listado de {{ verbose_name_plural }}{% endblock %}
+
 {% block content %}
 {% load custom_filters %}
 
 <div class="card">
-    <div class="card-header">
-        <h1 class="mb-4 ">Listado de {{ verbose_name_plural }}</h1>
-        <a href="{% url model_name|add:'_create' %}" class="btn btn-success btn-sm mb-3 ">Crear {{ verbose_name }}</a>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="mb-0">Listado de {{ verbose_name_plural }}</h1>
+        <div>
+            <a href="{% url model_name|add:'_create' %}" class="btn btn-success btn-sm">Crear {{ verbose_name }}</a>
+            {% if request.path == '/historialmensaje/' %}
+                <button id="enviarMensajes" class="btn btn-primary btn-sm ml-2">Enviar Mensajes</button>
+            {% endif %}
+        </div>
     </div>
+    
     <div class="card-body">
+        <!-- Tabla principal para el listado -->
         <table id="myTable" class="table table-striped">
             <thead>
                 <tr>
-                    <!-- Cabecera de la tabla, los campos del modelo se listan aquí -->
                     {% for field in fields %}
-                        <th>{{ field|capfirst }}</th> <!-- capitaliza el nombre del campo -->
+                        <th>{{ field|capfirst }}</th>
                     {% endfor %}
-                    <th>Acciones</th> <!-- Columna para los botones de acción -->
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Itera sobre los objetos del listado -->
                 {% for obj in object_list %}
                     <tr>
-                        <!-- Muestra los datos de cada modelo -->
                         {% for field in fields %}
-                            <td>{{ obj|get_field_value:field }}</td>  <!-- Usamos un filtro para acceder dinámicamente a los campos -->
+                            <td>{{ obj|get_field_value:field }}</td>
                         {% endfor %}
-                        <td> <!-- Columna de botones de acción -->
+                        <td>
                             <a href="{% url model_name|add:'_edit' obj.pk %}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{% url model_name|add:'_delete' obj.pk %}" method="post" style="display:inline;">
                                 {% csrf_token %}
@@ -38,7 +43,27 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- Botón para enviar mensajes con AJAX, solo visible si la URL es igual  -->
+     
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#enviarMensajes").click(function () {
+            $.ajax({
+                url: "{% url 'enviar-mensajes' %}",  // URL configurada en Django para el envío de mensajes
+                type: "GET",
+                success: function (response) {
+                    alert("Mensajes enviados: " + response.mensajes_enviados);
+                },
+                error: function () {
+                    alert("Error al enviar mensajes.");
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

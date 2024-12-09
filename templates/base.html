@@ -31,14 +31,16 @@
                         <a class="nav-link" href="{% url 'mantenimiento_list' %}"><i class="fas fa-wrench"></i> Mantenimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'alerta_list' %}"><i class="fas fa-bell"></i> Alertas</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'historialmensaje_list' %}"><i class="fas fa-comment-alt"></i> Historial de Mensajes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin">   <i class="fas fa-user-shield"></i> Administración</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

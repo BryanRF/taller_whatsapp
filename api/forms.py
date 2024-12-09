@@ -1,8 +1,8 @@
 from django import forms
 from .models import (
     Taller, Cliente, Marca, Modelo, TipoVehiculo, Vehiculo, 
-    Falla, TipoServicio, Servicio, Mantenimiento, 
-    Alerta, HistorialMensaje, RecordatorioMantenimiento, ConfiguracionSistema
+    Falla, TipoServicio, Servicio, Mantenimiento
+    , HistorialMensaje,  ConfiguracionSistema
 )
 
 from django.utils.safestring import mark_safe
@@ -133,15 +133,7 @@ class MantenimientoForm(BaseBootstrapForm):
             'estado': forms.Select(attrs={'class': 'form-select'}),
         }
 
-class AlertaForm(BaseBootstrapForm):
-    class Meta:
-        model = Alerta
-        fields = ['cliente', 'mensaje', 'tipo_alerta', 'estado']
-        widgets = {
-            'cliente': forms.Select(attrs={'class': 'form-select'}),
-            'tipo_alerta': forms.Select(attrs={'class': 'form-select'}),
-            'estado': forms.Select(attrs={'class': 'form-select'}),
-        }
+
 
 class HistorialMensajeForm(BaseBootstrapForm):
     class Meta:
@@ -152,14 +144,7 @@ class HistorialMensajeForm(BaseBootstrapForm):
             'estado_envio': forms.Select(attrs={'class': 'form-select'}),
         }
 
-class RecordatorioMantenimientoForm(BaseBootstrapForm):
-    class Meta:
-        model = RecordatorioMantenimiento
-        fields = ['vehiculo', 'mantenimiento', 'fecha_recordatorio', 'enviado']
-        widgets = {
-            'fecha_recordatorio': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'enviado': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-        }
+
 
 class ConfiguracionSistemaForm(BaseBootstrapForm):
     class Meta:
