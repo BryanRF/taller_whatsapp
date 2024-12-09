@@ -148,17 +148,3 @@ class GenericDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(self.request, f"{self.model._meta.verbose_name} eliminado con éxito.")
         return super().delete(request, *args, **kwargs)
     
-def enviar_alerta(request, cliente_id):
-    """
-    Envia un mensaje de alerta a un cliente específico.
-    """
-    cliente = Cliente.objects.get(id=cliente_id)
-    mensaje = f"Hola {cliente.nombre}, por favor recuerda que debes regresar al taller en 1 mes para el mantenimiento de tu vehículo."
-
-    # Enviar el mensaje de alerta
-    mensaje_sid = enviar_alerta_whatsapp(cliente.telefono, mensaje)
-
-    if mensaje_sid:
-        return JsonResponse({'status': 'success', 'message': 'Alerta enviada con éxito.'})
-    else:
-        return JsonResponse({'status': 'error', 'message': 'Hubo un problema al enviar la alerta.'})

@@ -1,52 +1,52 @@
 {% extends "usuarios/base.html" %}
 
 {% block content %}
-<div class="max-w-md mx-auto bg-white shadow-md rounded px-8 py-6">
-    <h2 class="text-xl font-bold text-gray-700 text-center mb-4">Registro</h2>
+<div class="max-w-md mx-auto bg-white dark:bg-gray-800 shadow-md rounded px-8 py-6">
+    <h2 class="text-xl font-bold text-gray-700 dark:text-gray-200 text-center mb-4">Registro</h2>
     <form method="post" class="space-y-4">
         {% csrf_token %}
         
         <!-- Nombre de usuario -->
         <div class="space-y-2">
-            <label for="username" class="block text-gray-600">Nombre de usuario</label>
-            <input type="text" name="username" id="username" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500"
+            <label for="username" class="block text-gray-600 dark:text-gray-300">Nombre de usuario</label>
+            <input type="text" name="username" id="username" class="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500 dark:focus:border-blue-400"
                    value="{{ form.username.value|default:'' }}">
             {% if form.username.errors %}
-                <p class="text-red-500 text-sm">{{ form.username.errors.0 }}</p>
+                <p class="text-red-500 dark:text-red-400 text-sm">{{ form.username.errors.0 }}</p>
             {% endif %}
-            <p class="text-gray-500 text-sm">Requerido. Máximo 150 caracteres. Solo letras, dígitos y @/./+/-/_.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Requerido. Máximo 150 caracteres. Solo letras, dígitos y @/./+/-/_.</p>
         </div>
         
         <!-- Contraseña -->
         <div class="space-y-2">
-            <label for="password1" class="block text-gray-600">Contraseña</label>
-            <input type="password" name="password1" id="password1" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500"
+            <label for="password1" class="block text-gray-600 dark:text-gray-300">Contraseña</label>
+            <input type="password" name="password1" id="password1" class="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500 dark:focus:border-blue-400"
                    value="{{ form.password1.value|default:'' }}">
             {% if form.password1.errors %}
-                <p class="text-red-500 text-sm">{{ form.password1.errors.0 }}</p>
+                <p class="text-red-500 dark:text-red-400 text-sm">{{ form.password1.errors.0 }}</p>
             {% endif %}
-            <p class="text-gray-500 text-sm">Debe contener al menos 8 caracteres y no ser completamente numérica.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Debe contener al menos 8 caracteres y no ser completamente numérica.</p>
         </div>
         
         <!-- Confirmar Contraseña -->
         <div class="space-y-2">
-            <label for="password2" class="block text-gray-600">Confirmar contraseña</label>
-            <input type="password" name="password2" id="password2" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500"
+            <label for="password2" class="block text-gray-600 dark:text-gray-300">Confirmar contraseña</label>
+            <input type="password" name="password2" id="password2" class="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500 dark:focus:border-blue-400"
                    value="{{ form.password2.value|default:'' }}">
             {% if form.password2.errors %}
-                <p class="text-red-500 text-sm">{{ form.password2.errors.0 }}</p>
+                <p class="text-red-500 dark:text-red-400 text-sm">{{ form.password2.errors.0 }}</p>
             {% endif %}
-            <p class="text-gray-500 text-sm">Introduce la misma contraseña anterior para verificar.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Introduce la misma contraseña anterior para verificar.</p>
         </div>
         
         <!-- Botón de Registro -->
-        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        <button type="submit" class="w-full bg-blue-500 dark:bg-blue-700 text-white py-2 rounded hover:bg-blue-600 dark:hover:bg-blue-800">
             Registrarse
         </button>
     </form>
     
     <div class="mt-4 text-center">
-        <p class="text-gray-600">¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="text-blue-500 hover:underline">Inicia sesión aquí</a></p>
+        <p class="text-gray-600 dark:text-gray-400">¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="text-blue-500 dark:text-blue-400 hover:underline">Inicia sesión aquí</a></p>
     </div>
 </div>
 {% endblock %}

@@ -1,24 +1,24 @@
 {% extends "usuarios/base.html" %}
 
 {% block content %}
-<div class="max-w-md mx-auto bg-white shadow-md rounded px-8 py-6">
-    <h2 class="text-xl font-bold text-gray-700 text-center mb-4">Iniciar Sesión</h2>
+<div class="max-w-md mx-auto bg-white dark:bg-gray-800 shadow-md rounded px-8 py-6">
+    <h2 class="text-xl font-bold text-gray-700 dark:text-gray-200 text-center mb-4">Iniciar Sesión</h2>
     <form method="post" class="space-y-4">
         {% csrf_token %}
         <div class="space-y-2">
-            <label for="username" class="block text-gray-600">Usuario</label>
-            <input type="text" name="username" id="username" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500" required>
+            <label for="username" class="block text-gray-600 dark:text-gray-300">Usuario</label>
+            <input type="text" name="username" id="username" class="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500 dark:focus:border-blue-400" required>
         </div>
         <div class="space-y-2">
-            <label for="password" class="block text-gray-600">Contraseña</label>
-            <input type="password" name="password" id="password" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500" required>
+            <label for="password" class="block text-gray-600 dark:text-gray-300">Contraseña</label>
+            <input type="password" name="password" id="password" class="w-full border border-gray-300 dark:border-gray-600 px-3 py-2 rounded focus:outline-none focus:ring focus:border-blue-500 dark:focus:border-blue-400" required>
         </div>
-        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        <button type="submit" class="w-full bg-blue-500 dark:bg-blue-700 text-white py-2 rounded hover:bg-blue-600 dark:hover:bg-blue-800">
             Iniciar Sesión
         </button>
     </form>
     <div class="mt-4 text-center">
-        <p class="text-gray-600">¿No tienes una cuenta? <a href="{% url 'register' %}" class="text-blue-500 hover:underline">Regístrate aquí</a></p>
+        <p class="text-gray-600 dark:text-gray-400">¿No tienes una cuenta? <a href="{% url 'register' %}" class="text-blue-500 dark:text-blue-400 hover:underline">Regístrate aquí</a></p>
     </div>
 </div>
 {% endblock %}

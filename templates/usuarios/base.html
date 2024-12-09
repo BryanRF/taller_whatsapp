@@ -8,24 +8,37 @@
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-800"  style="background-image: url('{% static 'img/taller_vehiculos.jpg' %}');">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100" style="background-image: url('{% static 'img/taller_vehiculos.jpg' %}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    
     <!-- Navbar -->
-    <nav class="bg-white shadow">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold text-blue-600">Taller Vehiculos</a>
-            <ul class="flex space-x-4">
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" class="text-gray-600 hover:text-blue-600">Cerrar Sesion</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}" class="text-gray-600 hover:text-blue-600">Iniciar Sesion</a></li>
-                    <li><a href="{% url 'register' %}" class="text-gray-600 hover:text-blue-600">Registrarse</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+    
     <!-- Content -->
     <div class="container mx-auto px-4 py-8">
         {% block content %}{% endblock %}
     </div>
+    
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Agregar o quitar clase 'dark' dinámicamente
+        if (prefersDarkScheme.matches) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+
+        // Escuchar cambios en las preferencias del sistema
+        prefersDarkScheme.addEventListener("change", (e) => {
+            if (e.matches) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        });
+    });
+</script>
+
 </html>

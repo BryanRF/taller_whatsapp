@@ -1,7 +1,7 @@
 from django import forms
 from .models import (
-    Taller, Cliente, Marca, Modelo, TipoVehiculo, Vehiculo, 
-    Falla, TipoServicio, Servicio, Mantenimiento
+    Taller, Cliente,  Vehiculo,
+   Servicio, Mantenimiento
     , HistorialMensaje,  ConfiguracionSistema
 )
 
@@ -14,9 +14,12 @@ class BaseBootstrapForm(forms.ModelForm):
         output = []
         for field_name, field in self.fields.items():
             widget = self[field_name]
-            field_classes = 'form-check-input' if isinstance(field.widget, forms.CheckboxInput) else 'form-control'
+            field_classes = 'form-check-input pr-sm' if isinstance(field.widget, forms.CheckboxInput) else 'form-control'
             field.widget.attrs.setdefault('class', field_classes)
-            div_class = 'col-6'  # Clase para la responsividad
+
+            # Cambiamos la clase para que los check tengan col-12
+            div_class = 'col-12' if isinstance(field.widget, forms.CheckboxInput) else 'col-6'
+            
             label = widget.label_tag(attrs={'class': 'form-label'})
             output.append(
                 f'<div class="{div_class} mb-3">'
@@ -31,14 +34,6 @@ class BaseBootstrapForm(forms.ModelForm):
 
 
 
-
-
-
-class TallerForm(BaseBootstrapForm):
-    class Meta:
-        model = Taller
-        fields = ['nombre', 'direccion', 'telefono', 'email']
-
 class ClienteForm(BaseBootstrapForm):
     class Meta:
         model = Cliente
@@ -47,30 +42,7 @@ class ClienteForm(BaseBootstrapForm):
             'recibir_alertas': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
-class MarcaForm(BaseBootstrapForm):
-    class Meta:
-        model = Marca
-        fields = ['nombre', 'descripcion']
-        widgets = {
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-        }
 
-class ModeloForm(BaseBootstrapForm):
-    class Meta:
-        model = Modelo
-        fields = ['marca', 'nombre', 'descripcion']
-        widgets = {
-            'marca': forms.Select(attrs={'class': 'form-select'}),
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-        }
-
-class TipoVehiculoForm(BaseBootstrapForm):
-    class Meta:
-        model = TipoVehiculo
-        fields = ['nombre', 'descripcion']
-        widgets = {
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-        }
 
 class VehiculoForm(BaseBootstrapForm):
     class Meta:
@@ -90,23 +62,7 @@ class VehiculoForm(BaseBootstrapForm):
             'revision_tecnica': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
 
-class FallaForm(BaseBootstrapForm):
-    class Meta:
-        model = Falla
-        fields = ['vehiculo', 'descripcion', 'estado_falla']
-        widgets = {
-            'vehiculo': forms.Select(attrs={'class': 'form-select'}),
-            'estado_falla': forms.Select(attrs={'class': 'form-select'}),
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-        }
 
-class TipoServicioForm(BaseBootstrapForm):
-    class Meta:
-        model = TipoServicio
-        fields = ['nombre', 'descripcion', 'costo_base']
-        widgets = {
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-        }
 
 class ServicioForm(BaseBootstrapForm):
     class Meta:
